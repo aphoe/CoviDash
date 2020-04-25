@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c201f2c75c051b54fa6197d334299fe",
+    "content-hash": "7fd566bf898db687ed11f688984b0353",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1811,6 +1811,41 @@
             "time": "2020-04-03T16:01:00+00:00"
         },
         {
+            "name": "larapack/config-writer",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larapack/config-writer.git",
+                "reference": "b36a716833240fe9e8b4b4d007b68ef9e91a1124"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/larapack/config-writer/zipball/b36a716833240fe9e8b4b4d007b68ef9e91a1124",
+                "reference": "b36a716833240fe9e8b4b4d007b68ef9e91a1124",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Save changes to the configuration file in script.",
+            "keywords": [
+                "config",
+                "larapack",
+                "laravel",
+                "package",
+                "save",
+                "writer"
+            ],
+            "time": "2016-04-28T12:45:27+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v7.8.1",
             "source": {
@@ -3110,6 +3145,56 @@
                 "php"
             ],
             "time": "2020-04-10T16:34:50+00:00"
+        },
+        {
+            "name": "oohology/dotenvwriter",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oohology/dotenvwriter.git",
+                "reference": "66975280d53731c47ef37c75aac298a3b9ac7686"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oohology/dotenvwriter/zipball/66975280d53731c47ef37c75aac298a3b9ac7686",
+                "reference": "66975280d53731c47ef37c75aac298a3b9ac7686",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DotEnvWriter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Woodmansee",
+                    "email": "woody@oohology.com",
+                    "homepage": "https://www.oohology.com"
+                }
+            ],
+            "description": "Interface for editing .env files in PHP.",
+            "keywords": [
+                "dotenv",
+                "php",
+                "writer"
+            ],
+            "time": "2018-04-23T13:59:41+00:00"
         },
         {
             "name": "opis/closure",
