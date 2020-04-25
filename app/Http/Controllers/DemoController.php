@@ -28,4 +28,14 @@ class DemoController extends Controller
         //dd($data);
         return view('theme.body', $data);
     }
+
+    public function auth(){
+        $data = [
+            'title' => 'Demo page',
+            'metaDesc' => 'The quick brown fox slept',
+            'bodyClass' => 'bg-gradient-primary',
+            'authClass' => 'bg-login-image',
+        ];
+        return view('theme.auth', $data);
+    }
 }

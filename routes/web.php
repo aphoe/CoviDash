@@ -32,4 +32,5 @@ Route::prefix('setup')
 Route::prefix('demo')
     ->group(function(){
         Route::get('theme', 'DemoController@theme');
+        Route::get('auth', 'DemoController@auth');
     });
