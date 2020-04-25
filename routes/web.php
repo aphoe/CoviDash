@@ -21,6 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('license',  'LicenseController@index');
+
+Route::prefix('setup')
+    ->group(function (){
+        Route::get('/', 'Setup\SetupController@create');
+        Route::post('/', 'Setup\SetupController@store');
+    });
+
 Route::prefix('demo')
     ->group(function(){
         Route::get('theme', 'DemoController@theme');

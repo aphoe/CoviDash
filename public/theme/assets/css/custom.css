@@ -1,0 +1,33 @@
+/*** Patches ***/
+label {
+    margin-bottom: 0;
+}
+.select2-selection {
+    display: block !important;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px) !important;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff !important;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2 !important;
+    border-radius: .35rem !important;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/*** Page section ***/
+.page-section {
+    margin: 30px 0 10px 0;
+}
+.page-section .heading{
+    margin-bottom: 0;
+    border-bottom: 1px solid #e1e1e1;
+    color: #333;
+    text-transform: uppercase;
+}
+.page-section .sub-heading{
+    color: #a3a3a3;
+}

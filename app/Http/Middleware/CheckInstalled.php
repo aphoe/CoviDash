@@ -15,7 +15,10 @@ class CheckInstalled
      */
     public function handle($request, Closure $next)
     {
-        if($request->url() !== url('setup')){
+        $allowedUrls = [
+            url('license'),
+        ];
+        if($request->url() !== url('setup') && !in_array($request->url(), $allowedUrls)){
             if (!file_exists(storage_path('framework/installed'))) {
                 return redirect('setup');
             }

@@ -3,8 +3,9 @@ return [
     'appName'               => 'CoviDash',
     'appUrl'                => 'https://github.com/aphoe',
 
-    'instanceName'          => 'CoviDash',
-    'instanceNameShort'     => null,
-    'instanceSlogan'        => null,
-    'admin_email'           => null,
+    'instanceName'          => env('CODA_INSTANCE_NAME', 'CoviDash'),
+    'instanceNameShort'     => env('CODA_INSTANCE_NAME_SHORT', 'CD'),
+    'instanceSlogan'        => env('CODA_INSTANCE_SLOGAN', ''),
+    'admin_email'           => env('CODA_INSTANCE_ADMIN_EMAIL', ''),
+    'country'               => env('CODA_INSTANCE_COUNTRY', 'NG'),
 ];
