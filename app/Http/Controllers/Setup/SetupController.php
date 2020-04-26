@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SetupRequest;
+use App\Province;
 use App\User;
 use Artisan;
 use DotEnvWriter\DotEnvWriter;
@@ -40,6 +41,7 @@ class SetupController extends Controller
      */
     public function store(SetupRequest $request)
     {
+        //dd($request->country);
         //.env
         try {
             $env = new DotEnvWriter( base_path('.env'));
@@ -65,8 +67,9 @@ class SetupController extends Controller
 
         //Run migration
         Artisan::call('migrate');
+        //Artisan::call('key:generate'); //Generate application key
 
-        Artisan::call('key:generate'); //Generate application key
+        $this->createProvinces($request->country); //Create provinces
 
         //User
         $user = new User();
@@ -90,10 +93,22 @@ class SetupController extends Controller
      *
      * @return array
      */
-    protected function getDownFilePayload(): array
+    private function getDownFilePayload(): array
     {
         return [
             'time' => Carbon::now(),
         ];
+    }
+
+    private function createProvinces(string $code){
+        $country = country($code);
+        $provinces = $country->getDivisions();
+
+        foreach($provinces as $key=>$province){
+            $state = new Province();
+            $state->code = $key;
+            $state->name = $province["name"];
+            $state->save();
+        }
     }
 }

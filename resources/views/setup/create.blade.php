@@ -226,7 +226,7 @@
                             href="{{ url('license') }}" target="_blank">License Agreement</a> of this app</label>
                 </div>
 
-                <button type="submit" class="btn btn-block btn-primary btn-lg mt-4">
+                <button type="submit" class="btn btn-block btn-primary btn-lg mt-4 mb-5">
                     <i class="far fa-save"></i>
                     Create Instance of {{ config('project.appName') }}
                 </button>
