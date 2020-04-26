@@ -29,11 +29,6 @@ Route::prefix('setup')
         Route::post('/', 'Setup\SetupController@store');
     });
 
-Route::prefix('admin')
-    ->group(function(){
-        Route::get('/', 'Backend\DashboardController@index');
-    });
-
 Route::prefix('demo')
     ->group(function(){
         Route::get('theme', 'DemoController@theme');
