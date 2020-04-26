@@ -6,10 +6,16 @@
 
 @push('css')
     {!! themeSectionCss(['admin']) !!}
+    {!! themeVendorCss('sweet-alert2/sweetalert2.min') !!}
 @endpush
 
 @push('js')
     {!! themeSectionJs(['admin']) !!}
+    {!! themeVendorJs('sweet-alert2/sweetalert2.all.min') !!}
+
+    <script>
+        activateUrl = baseUrl + 'admin/province/status';
+    </script>
 @endpush
 
 @section('body')
@@ -48,14 +54,20 @@
                             <td>{{ $sn++ }}</td>
                             <td>{{ $province->code }}</td>
                             <td>{{ $province->name }}</td>
-                            <td>{{ $province->active_status }}</td>
+                            <td id="active-{{ $province->id }}">{{ $province->active_status }}</td>
                             <td>
                                 <div class="admin-list">
                                     <a href="{{ url('admin/province/' . $province->id . '/edit') }}"><i
                                             class="far fa-edit"></i> Edit
                                     </a>
-                                    <a href="{{ url('admin/province/' . $province->id . '/activate') }}"><i
-                                            class="fas fa-ban"></i> Deactivate
+
+                                    <a href="#"
+                                       class="admin-activate-item"
+                                       data-id="{{ $province->id }}"
+                                       data-action="{{ ($province->active == true) ? 'deactivate': 'activate' }}"
+                                    >
+                                        <i class="{{ ($province->active == true) ? 'fas fa-ban': 'fas fa-check' }}"></i>
+                                        <span>{{ ($province->active == true) ? 'Deactivate': 'Activate' }}</span>
                                     </a>
                                 </div>
                             </td>
