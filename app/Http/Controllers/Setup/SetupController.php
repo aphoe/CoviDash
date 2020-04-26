@@ -66,6 +66,8 @@ class SetupController extends Controller
         //Run migration
         Artisan::call('migrate');
 
+        Artisan::call('key:generate'); //Generate application key
+
         //User
         $user = new User();
         $user->name = $request->name;

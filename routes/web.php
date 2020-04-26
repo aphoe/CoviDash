@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Backend\DashboardController@index')->name('home');
 
 Route::get('license',  'LicenseController@index');
 
@@ -27,6 +27,11 @@ Route::prefix('setup')
     ->group(function (){
         Route::get('/', 'Setup\SetupController@create');
         Route::post('/', 'Setup\SetupController@store');
+    });
+
+Route::prefix('admin')
+    ->group(function(){
+        Route::get('/', 'Backend\DashboardController@index');
     });
 
 Route::prefix('demo')

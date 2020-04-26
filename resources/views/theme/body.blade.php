@@ -12,7 +12,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img src="{{ themeImageUrl('logo.png') }}" alt="{{ config('project.instanceName') }}" class="img-fluid">
                 </div>
-                <div class="sidebar-brand-text mx-3">{{ config('project.instanceName') }}</div>
+                <div class="sidebar-brand-text mx-3">{{ config('project.instanceNameShort') }}</div>
             </a>
 
             <!-- Divider -->
