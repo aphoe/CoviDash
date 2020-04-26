@@ -10,21 +10,20 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Interface
+    Location
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Components</span>
+        <i class="fas fa-chess-rook"></i>
+        <span>Provinces</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-            <a class="collapse-item" href="{{ url('admin') }}">Cards</a>
+            <h6 class="collapse-header">Provinces:</h6>
+            <a class="collapse-item" href="{{ url('admin/province') }}">All provinces</a>
+            <a class="collapse-item" href="{{ url('admin/province/create') }}">Create new</a>
         </div>
     </div>
 </li>

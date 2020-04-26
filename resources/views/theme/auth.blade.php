@@ -20,6 +20,8 @@
                                         <h1 class="h4 text-gray-900 mb-4">{{ $title }}</h1>
                                     </div>
 
+                                    @include('partials.alert')
+
                                     @yield('auth')
 
                                 </div>

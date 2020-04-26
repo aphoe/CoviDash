@@ -66,8 +66,8 @@ class SetupController extends Controller
         }
 
         //Run migration
-        Artisan::call('migrate');
-        //Artisan::call('key:generate'); //Generate application key
+        Artisan::call('migrate --step');
+        Artisan::call('key:generate'); //Generate application key
 
         $this->createProvinces($request->country); //Create provinces
 

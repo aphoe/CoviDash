@@ -55,3 +55,38 @@ form.user .btn-user {
 .page-section .sub-heading{
     color: #a3a3a3;
 }
+/*** Alert ***/
+.alert{
+    color: #fff;
+}
+.alert.alert-primary{
+    background-color: #224abe;
+}
+.alert.alert-secondary{
+    background-color: #5a5c69;
+}
+.alert.alert-info{
+    background-color: #017eff;
+}
+.alert.alert-success{
+    background-color: #0aa21d;
+}
+.alert.alert-warning{
+    background-color: #f78900;
+}
+.alert.alert-danger{
+    background-color: #d80028;
+}
+.alert a{
+    color: #fff;
+    border-bottom: 1px dotted #e1e1e1;
+    transition: all 1s ease;
+}
+.alert a:hover{
+    border-bottom-style: solid;
+    text-decoration: none;
+}
+.alert .close {
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+}
