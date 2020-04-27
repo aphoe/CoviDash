@@ -75,6 +75,6 @@ return [
     /**
      * disable Analytics <script> block
      */
-    'disable_script_block' => true,
+    'disable_script_block' => false,
 
 ];

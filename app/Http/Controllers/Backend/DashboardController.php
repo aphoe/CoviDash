@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Incidence;
+use App\Province;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -38,6 +40,10 @@ class DashboardController extends Controller
             'bodyClass' => NULL,
             'menu' => 'admin',
             'user' => $this->user,
+            'incidences' => Incidence::count(),
+            'provinces' => Province::count(),
+            'incidenceProvinces' => Incidence::selectRaw('distinct(province_id)')->count(),
+            'users' => User::count(),
         ];
         return view('backend.dashboard.index', $data);
     }
