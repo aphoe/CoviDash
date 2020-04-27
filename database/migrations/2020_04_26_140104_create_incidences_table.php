@@ -20,9 +20,7 @@ class CreateIncidencesTable extends Migration
             $table->bigInteger('tested')->nullable();
             $table->bigInteger('positive')->nullable();
             $table->bigInteger('recovered')->nullable();
-            $table->bigInteger('relapsed')->nullable();
             $table->bigInteger('transfered')->nullable();
-            $table->bigInteger('evacuated')->nullable();
             $table->bigInteger('critical')->nullable();
             $table->bigInteger('died')->nullable();
             $table->timestamps();

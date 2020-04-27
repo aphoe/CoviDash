@@ -9,6 +9,8 @@
     <meta name="description" content="{{ $metaDesc ?? config('project.instanceSlogan') }}">
     <meta name="author" content="{{ config('project.appName') }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('project.instanceName') ?? env('APP_NAME') }} - {{ $title ?? config('project.instanceSlogan') }}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ themeImageUrl('favicons/apple-touch-icon.png') }}">

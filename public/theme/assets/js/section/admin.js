@@ -1,4 +1,89 @@
 $(document).ready(function () {
+    $('.admin-delete-item').click(function(n){
+        n.preventDefault();
+
+        var id = $(this).attr('data-id');
+        var tag = $(this).attr('data-tag');
+        var tr = '#' + trId + '-' + id;
+
+        Swal.fire({
+            title: null,
+            text: 'Are you sure you want to PERMANENTLY delete "' + tag + '"?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            console.log(result);
+            if (result.value) {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: deleteUrl + '/' + id ,
+                    type: "delete",
+                    error: function(data){
+                        //notify('error', 'Could not delete "' + tag + '": ' + data.statusText);
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            title: 'Error!',
+                            text: 'Could not delete "' + tag + '": ' + data.statusText,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                    },
+                    success: function(html){
+                        console.log(html);
+                        if(html == 1){
+                            //notify('info', '"' + tag + '" has been permanently deleted.');
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                title: null,
+                                text: '"' + tag + '" has been permanently deleted.',
+                                icon: 'info',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+                            $(tr).hide('slow');
+                        }else if(html == 0){
+                            //notify('notice', 'Could not delete "' + tag + '"');
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                title: null,
+                                text: 'Could not delete "' + tag + '"',
+                                icon: 'info',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+                        }else{
+                            //notify('notice', html);
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                title: null,
+                                text: html,
+                                icon: 'info',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+
     $('.admin-activate-item').click(function(e){
         e.preventDefault();
         e.stopPropagation();

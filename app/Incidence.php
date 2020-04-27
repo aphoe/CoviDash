@@ -9,7 +9,7 @@ class Incidence extends Model
 {
     protected $dates = [
         'day',
-    ]
+    ];
 
     /*
      * Relationships

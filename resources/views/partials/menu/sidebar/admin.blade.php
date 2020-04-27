@@ -15,11 +15,11 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-chess-rook"></i>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProvinces" aria-expanded="true" aria-controls="collapseProvinces">
+        <i class="fas fa-fw fa-chess-rook"></i>
         <span>Provinces</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseProvinces" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="py-2 collapse-inner rounded">
             <h6 class="collapse-header">Provinces:</h6>
             <a class="collapse-item" href="{{ url('admin/province') }}">All provinces</a>
@@ -28,19 +28,18 @@
     </div>
 </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
+<!-- Nav Item - Incidences Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIncidences" aria-expanded="true" aria-controls="collapseIncidences">
+        <i class="fas fa-fw fa-briefcase-medical"></i>
+        <span>Incidences</span>
     </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+    <div id="collapseIncidences" class="collapse" aria-labelledby="headingIncidences" data-parent="#accordionSidebar">
         <div class="py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <h6 class="collapse-header">Incidences menu:</h6>
+            <a class="collapse-item" href="{{ url('admin/incidence') }}">All incidences</a>
+            <a class="collapse-item" href="{{ url('admin/incidence/create') }}">Create new</a>
+            <a class="collapse-item" href="{{ url('admin/incidence/bulk/create') }}">Create bulk</a>
         </div>
     </div>
 </li>
