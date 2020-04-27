@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Province;
+use App\User;
 use Illuminate\Http\Request;
 
-class ProvincesStatusController extends Controller
+class UsersBlockController extends Controller
 {
     private $user;
 
@@ -15,7 +15,8 @@ class ProvincesStatusController extends Controller
         $this->middleware(['auth']);
 
         $this->middleware(function ($request, $next) {
-            $this->user = \Auth::user();
+            $id = \Auth::user()->id;
+            $this->user = User::findOrFail($id);
             return $next($request);
         });
     }
@@ -23,16 +24,20 @@ class ProvincesStatusController extends Controller
     public function update(Request $request){
         //return $request->all();
         $action = $request->action;
-        $province = Province::findOrFail($request->id);
+        $user = User::findOrFail($request->id);
 
-        if($action == 'activate'){
-            $province->active = true;
-            $province->save();
+        if($user->email === config('project.admin_email')){
+            return $user->name . ' is the super user, so cannot be blocked';
+        }
+
+        if($action == 'block'){
+            $user->blocked = true;
+            $user->save();
 
             return 1;
-        }else if($action == 'deactivate'){
-            $province->active = false;
-            $province->save();
+        }else if($action == 'unblock'){
+            $user->blocked = false;
+            $user->save();
 
             return 2;
         }

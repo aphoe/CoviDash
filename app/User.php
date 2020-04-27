@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+     * Accessors and mutators
+     */
+    public function getBlockedStatusAttribute(){
+        return $this->attributes['blocked'] ? 'Yes' : 'No';
+    }
 }

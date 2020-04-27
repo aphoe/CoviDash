@@ -77,6 +77,7 @@ class SetupController extends Controller
         $user->email = $request->email;
         $user->email_verified_at = Carbon::now();
         $user->password = \Hash::make($request->password);
+        $user->blocked = false;
         $user->save();
 
         //Create installed file
