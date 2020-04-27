@@ -25,24 +25,26 @@
                 {!! htmlAlert('info', 'There are no incidences recorded on ' . config('project.instanceName')) !!}
             @else
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th>Day</th>
+                            <th style="min-width: 115px;">Day</th>
+                            <th>Province</th>
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
                             <th>Transfered</th>
                             <th>Critical</th>
                             <th>Died</th>
-                            <th>&nbsp;</th>
+                            <th style="min-width: 170px;">&nbsp;</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>&nbsp;</th>
                             <th>Day</th>
+                            <th>Province</th>
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
@@ -57,12 +59,13 @@
                             <tr id="incidence-{{ $incidence->id }}">
                                 <td>{{ $sn++ }}</td>
                                 <td>{{ $incidence->day->format('j M Y') }}</td>
-                                <td>{{ numberSuffix($incidence->tested) }}</td>
-                                <td>{{ numberSuffix($incidence->positive) }}</td>
-                                <td>{{ numberSuffix($incidence->recovered) }}</td>
-                                <td>{{ numberSuffix($incidence->transfered) }}</td>
-                                <td>{{ numberSuffix($incidence->critical) }}</td>
-                                <td>{{ numberSuffix($incidence->died) }}</td>
+                                <td>{{ $incidence->province->code ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->tested) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->positive) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->recovered) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->transfered) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->critical) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->died) ?? '--' }}</td>
                                 <td>
                                     <div class="admin-list">
                                         <a href="{{ url('admin/incidence/' . $incidence->id . '/edit') }}"><i

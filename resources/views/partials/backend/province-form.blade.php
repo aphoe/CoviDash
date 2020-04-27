@@ -3,7 +3,7 @@
     {{ Form::label('code', 'Code') }}
     {{ Form::text('code', old('code'), ['id'=>'code', 'placeholder'=>'Code of province', 'class'=>'form-control ' .  ($errors->has('code') ? ' is-invalid' : null)]) }}
 
-    @error('name')
+    @error('code')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

@@ -39,7 +39,7 @@
             <h6 class="collapse-header">Incidences menu:</h6>
             <a class="collapse-item" href="{{ url('admin/incidence') }}">All incidences</a>
             <a class="collapse-item" href="{{ url('admin/incidence/create') }}">Create new</a>
-            <a class="collapse-item" href="{{ url('admin/incidence/bulk/create') }}">Create bulk</a>
+            <a class="collapse-item" href="{{ url('admin/incidence/bulk/create') }}">Bulk create</a>
         </div>
     </div>
 </li>

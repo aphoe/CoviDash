@@ -31,7 +31,8 @@ class IncidencesController extends Controller
      */
     public function index()
     {
-        $incidences = Incidence::orderBy('day', 'desc')
+        $incidences = Incidence::with(['province'])
+            ->orderBy('day', 'desc')
             ->paginate(100);
 
         $data = [
