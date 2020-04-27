@@ -29,6 +29,16 @@ Route::prefix('setup')
         Route::post('/', 'Setup\SetupController@store');
     });
 
+Route::prefix('profile')
+    ->group(function(){
+        Route::prefix('setting')
+            ->group(function(){
+                Route::get('/', 'User\Profile\SettingsController@edit');
+                Route::put('user', 'User\Profile\UserController@update');
+                Route::put('password', 'User\Profile\PasswordController@update');
+            });
+    });
+
 Route::prefix('demo')
     ->group(function(){
         Route::get('theme', 'DemoController@theme');
