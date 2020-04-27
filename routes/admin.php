@@ -15,3 +15,6 @@ Route::resource('user', 'Backend\UsersController');
 
 Route::get('url/status', 'Backend\UrlsStatusController@update');
 Route::resource('url', 'Backend\UrlsController');
+
+Route::get('news/status', 'Backend\NewsStatusController@update');
+Route::resource('news', 'Backend\NewsController');
