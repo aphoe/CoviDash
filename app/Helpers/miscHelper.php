@@ -1,10 +1,6 @@
 <?php
 
-use App\Artiste;
-use App\Episode;
-use App\Genre;
-use App\Movie;
-use App\WatchList;
+use App\Province;
 
 if(!function_exists('uniqueSlug')){
     /**
@@ -17,22 +13,8 @@ if(!function_exists('uniqueSlug')){
         $slug = str_slug($name);
         $whileSlug = $slug;
         switch($table) {
-            case 'artiste':
-                $eloquent = Artiste::where('slug', $slug);
-                break;
-            case 'genre':
-                $eloquent = Genre::where('slug', $slug);
-                break;
-            case 'video':
-            case 'movie':
-                $eloquent = Movie::where('slug', $slug);
-                break;
-            case 'episode':
-                $eloquent = Episode::where('slug', $slug);
-                break;
-            case 'watch-list':
-            case 'watchList':
-                $eloquent = WatchList::where('slug', $slug);
+            case 'province':
+                $eloquent = Province::where('slug', $slug);
                 break;
 
             default:
@@ -43,22 +25,8 @@ if(!function_exists('uniqueSlug')){
             $whileSlug = $slug . '-' . $sn++;
 
             switch($table) {
-                case 'artiste':
-                    $eloquent = Artiste::where('slug', $whileSlug);
-                    break;
-                case 'genre':
-                    $eloquent = Genre::where('slug', $whileSlug);
-                    break;
-                case 'video':
-                case 'movie':
-                    $eloquent = Movie::where('slug', $whileSlug);
-                    break;
-                case 'episode':
-                    $eloquent = Episode::where('slug', $whileSlug);
-                    break;
-                case 'watch-list':
-                case 'watchList':
-                    $eloquent = WatchList::where('slug', $whileSlug);
+                case 'province':
+                    $eloquent = Province::where('slug', $whileSlug);
                     break;
 
                 default:

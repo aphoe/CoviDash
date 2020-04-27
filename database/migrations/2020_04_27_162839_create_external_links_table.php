@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvincesTable extends Migration
+class CreateExternalLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateProvincesTable extends Migration
      */
     public function up()
     {
-        Schema::create('provinces', function (Blueprint $table) {
+        Schema::create('external_links', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 8);
-            $table->string('name');
-            $table->string('slug');
+            $table->string('title', 120);
+            $table->string('description')->nullable();
+            $table->string('url');
+            $table->integer('priority')->default(50);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CreateProvincesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provinces');
+        Schema::dropIfExists('external_links');
     }
 }

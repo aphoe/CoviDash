@@ -67,7 +67,7 @@
                 </div>
 
                 <!-- Database user\'s password field -->
-                <div class="form-group input-required">
+                <div class="form-group">
                 	{{ Form::label('database_password', 'Database user\'s password (optional)') }}
                 	{{ Form::password('database_password', ['id'=>'database_password', 'placeholder'=>'Password of database user', 'class'=>'form-control ' .  ($errors->has('database_password') ? ' is-invalid' : null)]) }}
 
@@ -132,7 +132,7 @@
                 </div>
 
                 <!-- Slogan field -->
-                <div class="form-group input-required">
+                <div class="form-group">
                 	{{ Form::label('instance_slogan', 'Slogan (optional)') }}
                 	{{ Form::text('instance_slogan', old('instance_slogan'), ['id'=>'instance_slogan', 'placeholder'=>'Slogan', 'class'=>'form-control ' .  ($errors->has('instance_slogan') ? ' is-invalid' : null)]) }}
 
@@ -165,6 +165,18 @@
                 			<strong>{{ $message }}</strong>
                 		</span>
                 	@enderror
+                </div>
+
+                <!-- Google analytics ID field -->
+                <div class="form-group input-required">
+                    {{ Form::label('google_tracking_id', 'Google analytics ID') }}
+                    {{ Form::text('google_tracking_id', old('google_tracking_id'), ['id'=>'google_tracking_id', 'placeholder'=>'Enter your google analytics tracking ID', 'class'=>'form-control ' .  ($errors->has('google_tracking_id') ? ' is-invalid' : null)]) }}
+
+                    @error('google_tracking_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="page-section">

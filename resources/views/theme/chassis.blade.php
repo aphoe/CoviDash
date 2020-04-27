@@ -33,6 +33,8 @@
 
     @stack('css')
 
+    {{--{!! Analytics::render() !!}--}}
+
 </head>
 
 <body id="page-top" class="{{ $bodyClass ?? '' }}">

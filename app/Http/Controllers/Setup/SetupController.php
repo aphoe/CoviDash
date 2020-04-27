@@ -54,6 +54,9 @@ class SetupController extends Controller
                 ->set('APP_URL', $request->url)
                 ->set('APP_NAME', 'CoviDash')
 
+                ->set('ANALYTICS_PROVIDER', 'GoogleAnalytics')
+                ->set('ANALYTICS_TRACKING_ID', $request->google_tracking_id)
+
                 ->set('CODA_INSTANCE_NAME', $request->instance_name)
                 ->set('CODA_INSTANCE_NAME_SHORT', $request->instance_short_name)
                 ->set('CODA_INSTANCE_SLOGAN', $request->instance_slogan)
@@ -109,6 +112,7 @@ class SetupController extends Controller
             $state = new Province();
             $state->code = $key;
             $state->name = $province["name"];
+            $state->slug = uniqueSlug($province["name"], 'province');
             $state->save();
         }
     }

@@ -35,6 +35,7 @@ class SetupRequest extends FormRequest
             'instance_slogan' => 'nullable|max:120',
             'url' => 'required|url',
             'country' => 'required|max:2',
+            'google_tracking_id' => 'required|string|min:13|alpha_dash|starts_with:UA-',
 
             'name' => 'required|max:80',
             'email' => 'required|email',

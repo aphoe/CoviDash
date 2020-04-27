@@ -12,3 +12,6 @@ Route::resource('incidence', 'Backend\IncidencesController');
 
 Route::get('user/block', 'Backend\UsersBlockController@update');
 Route::resource('user', 'Backend\UsersController');
+
+Route::get('url/status', 'Backend\UrlsStatusController@update');
+Route::resource('url', 'Backend\UrlsController');

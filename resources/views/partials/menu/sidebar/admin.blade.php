@@ -10,10 +10,10 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Location
+    Data
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
+<!-- Nav Item - Provinces Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProvinces" aria-expanded="true" aria-controls="collapseProvinces">
         <i class="fas fa-fw fa-chess-rook"></i>
@@ -52,17 +52,40 @@
     People
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
+<!-- Nav Item - Users Collapse Menu -->
 <li class="nav-item">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
         <i class="fas fa-fw fa-users"></i>
         <span>Users</span>
     </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="py-2 collapse-inner rounded">
             <h6 class="collapse-header">Users list:</h6>
             <a class="collapse-item" href="{{ url('admin/user') }}">All users</a>
             <a class="collapse-item" href="{{ url('admin/user/create') }}">Create new</a>
+        </div>
+    </div>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Resources
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLinks" aria-expanded="true" aria-controls="collapseLinks">
+        <i class="fas fa-fw fa-external-link-alt"></i>
+        <span>External links</span>
+    </a>
+    <div id="collapseLinks" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="py-2 collapse-inner rounded">
+            <h6 class="collapse-header">External URLs:</h6>
+            <a class="collapse-item" href="{{ url('admin/url') }}">All links</a>
+            <a class="collapse-item" href="{{ url('admin/url/create') }}">Create new</a>
         </div>
     </div>
 </li>
