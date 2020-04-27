@@ -33,7 +33,7 @@
 
     @stack('css')
 
-    {{--{!! Analytics::render() !!}--}}
+    {!! Analytics::render() !!}
 
 </head>
 
