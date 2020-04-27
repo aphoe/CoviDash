@@ -106,7 +106,20 @@ class IncidencesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $incidence = Incidence::findOrFail($id);
+
+        $data = [
+            'title' => 'Edit incidence',
+            'metaDesc' => 'Edit an incidence',
+            'bodyClass' => NULL,
+            'menu' => 'admin',
+            'user' => $this->user,
+            'incidence' => $incidence,
+            'provinces' => Province::where('active', true)
+                ->orderBy('name')
+                ->pluck('name', 'id'),
+        ];
+        return view('backend.incidence.edit', $data);
     }
 
     /**
@@ -116,9 +129,20 @@ class IncidencesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IncidenceRequest $request, $id)
     {
-        //
+        $incidence = Incidence::findOrFail($id);
+        $incidence->province_id = $request->province_id;
+        $incidence->day = $request->day;
+        $incidence->tested = $request->tested;
+        $incidence->positive = $request->positive;
+        $incidence->recovered = $request->recovered;
+        $incidence->transfered = $request->transfered;
+        $incidence->critical = $request->critical;
+        $incidence->died = $request->died;
+        $incidence->save();
+
+        return redirect('admin/incidence')->with('theme-success', 'Incidence has been updated');
     }
 
     /**
