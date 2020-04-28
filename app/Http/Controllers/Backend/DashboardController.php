@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'user' => $this->user,
             'incidences' => Incidence::count(),
             'provinces' => Province::count(),
-            'incidenceProvinces' => Incidence::selectRaw('distinct(province_id)')->count(),
+            'incidenceProvinces' => Incidence::selectRaw('distinct(`province_id`)')->get()->count(),
             'users' => User::count(),
         ];
         return view('backend.dashboard.index', $data);

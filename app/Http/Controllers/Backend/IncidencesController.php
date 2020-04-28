@@ -33,6 +33,7 @@ class IncidencesController extends Controller
     {
         $incidences = Incidence::with(['province'])
             ->orderBy('day', 'desc')
+            ->orderBy('province_id', 'asc')
             ->paginate(100);
 
         $data = [
