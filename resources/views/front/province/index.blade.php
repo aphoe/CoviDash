@@ -79,13 +79,13 @@
             </div>
         @endif
 
-        @if($incidence->transfered !== null)
+        @if($incidence->transferred !== null)
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Transfered out</div>
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">transferred out</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ number_format($incidence->tranfered) }}</div>
                             </div>
                             <div class="col-auto">

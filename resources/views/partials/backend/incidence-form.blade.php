@@ -60,10 +60,10 @@
 
 <!-- No. of patients transferred field -->
 <div class="form-group">
-    {{ Form::label('transfered', 'No. of patients transferred') }}
-    {{ Form::text('transfered', old('transfered'), ['id'=>'transfered', 'placeholder'=>'Number of patients transfered out', 'class'=>'form-control ' .  ($errors->has('transfered') ? ' is-invalid' : null)]) }}
+    {{ Form::label('transferred', 'No. of patients transferred') }}
+    {{ Form::text('transferred', old('transferred'), ['id'=>'transferred', 'placeholder'=>'Number of patients transferred out', 'class'=>'form-control ' .  ($errors->has('transferred') ? ' is-invalid' : null)]) }}
 
-    @error('transfered')
+    @error('transferred')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

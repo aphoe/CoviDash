@@ -48,7 +48,7 @@ if (!function_exists('incidenceLineData')) {
             'tested' => [],
             'positive' => [],
             'recovered' => [],
-            'transfered' => [],
+            'transferred' => [],
             'critical' => [],
             'died' => [],
         ];
@@ -61,7 +61,7 @@ if (!function_exists('incidenceLineData')) {
                 $output['tested'][$counter] = $incidence->tested !== null ? (int)$incidence->tested : $incidence->tested;
                 $output['positive'][$counter] = $incidence->positive !== null ? (int)$incidence->positive : $incidence->positive;
                 $output['recovered'][$counter] = $incidence->recovered !== null ? (int)$incidence->recovered : $incidence->recovered;
-                $output['transfered'][$counter] = $incidence->transfered !== null ? (int)$incidence->transfered : $incidence->transfered;
+                $output['transferred'][$counter] = $incidence->transferred !== null ? (int)$incidence->transferred : $incidence->transferred;
                 $output['critical'][$counter] = $incidence->critical !== null ? (int)$incidence->critical : $incidence->critical;
                 $output['died'][$counter] = $incidence->died !== null ?(int)$incidence->died : $incidence->died;
             }
@@ -70,7 +70,7 @@ if (!function_exists('incidenceLineData')) {
                 $output['tested'][$counter] = $output['tested'][$counter - 1] !== null ? $output['tested'][$counter - 1] + $incidence->tested : $incidence->tested;
                 $output['positive'][$counter] = $output['positive'][$counter - 1] !== null ? $output['positive'][$counter - 1] + $incidence->positive : $incidence->positive;
                 $output['recovered'][$counter] = $output['recovered'][$counter - 1] !== null ? $output['recovered'][$counter - 1] + $incidence->recovered : $incidence->recovered;
-                $output['transfered'][$counter] = $output['transfered'][$counter - 1] !== null ? $output['transfered'][$counter - 1] + $incidence->transfered : $incidence->transfered;
+                $output['transferred'][$counter] = $output['transferred'][$counter - 1] !== null ? $output['transferred'][$counter - 1] + $incidence->transferred : $incidence->transferred;
                 $output['critical'][$counter] = $output['critical'][$counter - 1] !== null ? $output['critical'][$counter - 1] + $incidence->critical : $incidence->critical;
                 $output['died'][$counter] = $output['died'][$counter - 1] !== null ? $output['died'][$counter - 1] + $incidence->died : $incidence->died;
             }
@@ -142,7 +142,7 @@ if (!function_exists('daysDiff')) {
             'tested' => $recent->tested === null && $previous->tested === null ? null : $previous->tested - $recent->tested,
             'positive' => $recent->positive === null && $previous->positive === null ? null : $previous->positive - $recent->positive,
             'recovered' => $recent->recovered === null && $previous->recovered === null ? null : $previous->recovered - $recent->recovered,
-            'transfered' => $recent->transfered === null && $previous->transfered === null ? null : $previous->transfered - $recent->transfered,
+            'transferred' => $recent->transferred === null && $previous->transferred === null ? null : $previous->transferred - $recent->transferred,
             'critical' => $recent->critical === null && $previous->critical === null ? null : $previous->critical - $recent->critical,
             'died' => $recent->died === null && $previous->died === null ? null : $previous->died - $recent->died,
         ];

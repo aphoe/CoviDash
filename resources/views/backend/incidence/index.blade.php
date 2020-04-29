@@ -34,7 +34,7 @@
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
-                            <th>Transfered</th>
+                            <th>transferred</th>
                             <th>Critical</th>
                             <th>Died</th>
                             <th style="min-width: 170px;">&nbsp;</th>
@@ -48,7 +48,7 @@
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
-                            <th>Transfered</th>
+                            <th>transferred</th>
                             <th>Critical</th>
                             <th>Died</th>
                             <th>&nbsp;</th>
@@ -63,7 +63,7 @@
                                 <td>{{ numberSuffix($incidence->tested) ?? '--' }}</td>
                                 <td>{{ numberSuffix($incidence->positive) ?? '--' }}</td>
                                 <td>{{ numberSuffix($incidence->recovered) ?? '--' }}</td>
-                                <td>{{ numberSuffix($incidence->transfered) ?? '--' }}</td>
+                                <td>{{ numberSuffix($incidence->transferred) ?? '--' }}</td>
                                 <td>{{ numberSuffix($incidence->critical) ?? '--' }}</td>
                                 <td>{{ numberSuffix($incidence->died) ?? '--' }}</td>
                                 <td>

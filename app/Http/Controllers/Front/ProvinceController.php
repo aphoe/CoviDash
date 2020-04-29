@@ -37,7 +37,7 @@ class ProvinceController extends Controller
             ->first()
             ->day;
 
-        $raw = 'sum(tested) as tested, sum(positive) as positive, sum(recovered) as recovered, sum(transfered) as transfered, sum(critical) as critical, sum(died) as died';
+        $raw = 'sum(tested) as tested, sum(positive) as positive, sum(recovered) as recovered, sum(transferred) as transferred, sum(critical) as critical, sum(died) as died';
         $incidence = Incidence::selectRaw($raw)
             ->where('province_id', $province->id)
             ->first();
@@ -60,7 +60,7 @@ class ProvinceController extends Controller
         $lineChart->dataset('Total recovered', 'line', $lineData->recovered)
             ->color('rgb(28, 200, 138)')
             ->backgroundcolor('rgba(28, 200, 138, 0.1)');
-        $lineChart->dataset('Transferred elsewhere', 'line', $lineData->transfered)
+        $lineChart->dataset('Transferred elsewhere', 'line', $lineData->transferred)
             ->color('rgb(54, 185, 204)')
             ->backgroundcolor('rgba(54, 185, 204, 0.1)');
         $lineChart->dataset('In critical state', 'line', $lineData->critical)

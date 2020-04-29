@@ -80,10 +80,10 @@
                     <div class="col">
                         <!-- No. transferred field -->
                         <div class="form-group">
-                            {{ Form::label($province->code . '-' . 'transfered', 'No. transferred') }}
-                            {{ Form::text($province->code . '-' . 'transfered', old($province->code . '-' . 'transfered'), ['id'=>$province->code . '-' . 'transfered', 'placeholder'=>'Number transferred', 'class'=>'form-control ' .  ($errors->has($province->code . '-' . 'transfered') ? ' is-invalid' : null)]) }}
+                            {{ Form::label($province->code . '-' . 'transferred', 'No. transferred') }}
+                            {{ Form::text($province->code . '-' . 'transferred', old($province->code . '-' . 'transferred'), ['id'=>$province->code . '-' . 'transferred', 'placeholder'=>'Number transferred', 'class'=>'form-control ' .  ($errors->has($province->code . '-' . 'transferred') ? ' is-invalid' : null)]) }}
 
-                            @error($province->code . '-' . 'transfered')
+                            @error($province->code . '-' . 'transferred')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

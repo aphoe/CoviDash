@@ -81,7 +81,7 @@ class IncidencesController extends Controller
         $incidence->tested = $request->tested;
         $incidence->positive = $request->positive;
         $incidence->recovered = $request->recovered;
-        $incidence->transfered = $request->transfered;
+        $incidence->transferred = $request->transferred;
         $incidence->critical = $request->critical;
         $incidence->died = $request->died;
         $incidence->save();
@@ -139,7 +139,7 @@ class IncidencesController extends Controller
         $incidence->tested = $request->tested;
         $incidence->positive = $request->positive;
         $incidence->recovered = $request->recovered;
-        $incidence->transfered = $request->transfered;
+        $incidence->transferred = $request->transferred;
         $incidence->critical = $request->critical;
         $incidence->died = $request->died;
         $incidence->save();

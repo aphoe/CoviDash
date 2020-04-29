@@ -57,7 +57,7 @@ $sn = 1;
                         <td class="text-primary">{{ $incidence->tested ?? '--' }}</td>
                         <td class="text-warning">{{ $incidence->positive ?? '--' }}</td>
                         <td class="text-success">{{ $incidence->recovered ?? '--' }}</td>
-                        <td class="text-info">{{ $incidence->transfered ?? '--' }}</td>
+                        <td class="text-info">{{ $incidence->transferred ?? '--' }}</td>
                         <td class="text-warning">{{ $incidence->critical ?? '--' }}</td>
                         <td class="text-danger">{{ $incidence->died ?? '--' }}</td>
                         <td>

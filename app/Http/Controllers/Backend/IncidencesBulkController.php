@@ -58,7 +58,7 @@ class IncidencesBulkController extends Controller
                 $request->get($prefix . 'tested') !== null ||
                 $request->get($prefix . 'positive') !== null ||
                 $request->get($prefix . 'recovered') !== null ||
-                $request->get($prefix . 'transfered') !== null ||
+                $request->get($prefix . 'transferred') !== null ||
                 $request->get($prefix . 'critical') !== null ||
                 $request->get($prefix . 'died') !== null
             ){
@@ -68,7 +68,7 @@ class IncidencesBulkController extends Controller
                 $incidence->tested = $request->get($prefix . 'tested');
                 $incidence->positive = $request->get($prefix . 'positive');
                 $incidence->recovered = $request->get($prefix . 'recovered');
-                $incidence->transfered = $request->get($prefix . 'transfered');
+                $incidence->transferred = $request->get($prefix . 'transferred');
                 $incidence->critical = $request->get($prefix . 'critical');
                 $incidence->died = $request->get($prefix . 'died');
                 $incidence->save();

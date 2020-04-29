@@ -37,7 +37,7 @@ class IncidenceBulkRequest extends FormRequest
             $rules[$province->code . '-' . 'tested'] = 'nullable|numeric';
             $rules[$province->code . '-' . 'positive'] = 'nullable|numeric';
             $rules[$province->code . '-' . 'recovered'] = 'nullable|numeric';
-            $rules[$province->code . '-' . 'transfered'] = 'nullable|numeric';
+            $rules[$province->code . '-' . 'transferred'] = 'nullable|numeric';
             $rules[$province->code . '-' . 'critical'] = 'nullable|numeric';
             $rules[$province->code . '-' . 'died'] = 'nullable|numeric';
         }

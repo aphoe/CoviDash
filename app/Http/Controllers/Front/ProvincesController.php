@@ -25,7 +25,7 @@ class ProvincesController extends Controller
 
     public function index(){
         $country = country(config('project.country'));
-        $raw = 'sum(tested) as tested, sum(positive) as positive, sum(recovered) as recovered, sum(transfered) as transfered, sum(critical) as critical, sum(died) as died';
+        $raw = 'sum(tested) as tested, sum(positive) as positive, sum(recovered) as recovered, sum(transferred) as transferred, sum(critical) as critical, sum(died) as died';
         $incidences = Incidence::selectRaw('province_id, ' . $raw)
             ->with(['province'])
             ->orderBy('positive')

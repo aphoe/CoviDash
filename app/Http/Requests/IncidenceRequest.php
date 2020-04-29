@@ -29,7 +29,7 @@ class IncidenceRequest extends FormRequest
             'tested' => 'nullable|numeric',
             'positive' => 'nullable|numeric',
             'recovered' => 'nullable|numeric',
-            'transfered' => 'nullable|numeric',
+            'transferred' => 'nullable|numeric',
             'critical' => 'nullable|numeric',
             'died' => 'nullable|numeric',
         ];
