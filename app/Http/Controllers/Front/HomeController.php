@@ -16,7 +16,13 @@ class HomeController extends Controller
 
     public function __construct()
     {
-
+        if (\Auth::check()){
+            $this->middleware(function ($request, $next) {
+                $id = \Auth::user()->id;
+                $this->user = User::findOrFail($id);
+                return $next($request);
+            });
+        }
     }
 
     public function index(){

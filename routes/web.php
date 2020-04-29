@@ -17,7 +17,11 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'Backend\DashboardController@index')->name('home');
 
-Route::get('/', 'Front\HomeController@index');
+Route::prefix('/')
+    ->group(function (){
+        Route::get('/', 'Front\HomeController@index');
+        Route::get('news', 'Front\NewsItemsController@index');
+    });
 
 Route::get('license',  'LicenseController@index');
 
