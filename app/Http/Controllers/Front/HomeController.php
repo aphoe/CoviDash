@@ -90,8 +90,8 @@ class HomeController extends Controller
             ->first();
 
         $data = [
-            'title' => 'Welcome to ' . config('project.instanceName'),
-            'metaDesc' => 'Display statistic for ' . $country->getOfficialName(),
+            'title' => config('project.disease') . ' data visualisation for ' . $country->getOfficialName(),
+            'metaDesc' => 'Data visualisation for ' . $country->getOfficialName(),
             'bodyClass' => NULL,
             'menu' => 'front',
             'user' => $this->user,

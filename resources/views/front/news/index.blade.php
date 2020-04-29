@@ -2,13 +2,13 @@
     $sn = startPageSn($newsItems);
 @endphp
 
-@extends('theme.body')
+@extends('theme.front')
 
 @push('css')
     {!! themeSectionCss(['news']) !!}
 @endpush
 
-@section('body')
+@section('front')
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">

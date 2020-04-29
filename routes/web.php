@@ -21,6 +21,7 @@ Route::prefix('/')
     ->group(function (){
         Route::get('/', 'Front\HomeController@index');
         Route::get('news', 'Front\NewsItemsController@index');
+        Route::get('states', 'Front\ProvincesController@index');
     });
 
 Route::get('license',  'LicenseController@index');

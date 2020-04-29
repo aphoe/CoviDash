@@ -63,6 +63,8 @@ class SetupController extends Controller
                 ->set('CODA_INSTANCE_ADMIN_EMAIL', $request->email)
                 ->set('CODA_INSTANCE_COUNTRY', $request->country)
 
+                ->set('CODA_DISEASE', 'COVID-19')
+
                 ->save();
         }catch (\Exception $ex){
             return redirect()->back()->with('theme-danger', $ex->getMessage());

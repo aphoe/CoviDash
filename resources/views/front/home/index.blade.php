@@ -1,4 +1,4 @@
-@extends('theme.body')
+@extends('theme.front')
 
 @push('css')
     {!! themeSectionCss(['chart', 'news']) !!}
@@ -13,7 +13,7 @@
     </script>
 @endpush
 
-@section('body')
+@section('front')
     <p class="mb-4">Aside the global numbers, the latest date of all records is <strong class="text-primary">{{ $day->format('jS F, Y') }}</strong></p>
     <div class="row">
         @if($incidence->tested !== null)
