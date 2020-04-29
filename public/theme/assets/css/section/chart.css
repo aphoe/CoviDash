@@ -1,0 +1,59 @@
+.chart-numbers {
+    border-bottom: 1px solid #efefef;
+    text-align: center;
+    padding: 10px 0;
+}
+.chart-numbers:last-of-type  {
+    border-bottom: none;
+}
+.chart-numbers .icon{
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    padding-top: 12px;
+    padding-right: 10px;
+}
+.chart-numbers .icon i{
+    font-size: 48px;
+    opacity: 0.2;
+}
+.chart-numbers .right-hand{
+    display: inline-block;
+}
+.chart-numbers .title{
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: right;
+}
+.chart-numbers .numbers{
+    text-align: right;
+}
+.chart-numbers .numbers .data{
+    line-height: 1em;
+}
+.chart-numbers .numbers .label{
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 100;
+    line-height: 1em;
+}
+.chart-numbers .numbers .new{
+    display: inline-block;
+    padding-right: 8px;
+    border-right: 1px dotted #e1e1e1;
+}
+.chart-numbers .numbers .new .data{
+    font-size: 28px;
+}
+.chart-numbers .numbers .new .label{}
+.chart-numbers .numbers .total{
+    display: inline-block;
+    padding-left: 8px;
+}
+.chart-numbers .numbers .total .data{
+    font-size: 28px;
+    font-weight: 700;
+    color: #555;
+}
+.chart-numbers .numbers .total .label{}
