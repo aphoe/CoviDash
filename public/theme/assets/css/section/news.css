@@ -1,0 +1,9 @@
+.news-section{
+    margin-bottom: 20px;
+}
+.news-section .heading{}
+.news-section .heading small{
+    display: block;
+    font-size: 70%;
+    color: #aaa;
+}

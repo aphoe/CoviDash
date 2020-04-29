@@ -98,12 +98,11 @@ class HomeController extends Controller
             'currentStats' => $currentStats,
             'newsItems' => NewsItem::orderBy('date', 'desc')
                 ->where('active', true)
-                ->take(5)
+                ->take(10)
                 ->get(),
             'links' => ExternalLink::where('active', true)
                 ->orderBy('priority', 'desc')
                 ->orderBy('title')
-                ->take(10)
                 ->get()
         ];
         return view('front.home.index', $data);

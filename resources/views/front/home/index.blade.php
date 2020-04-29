@@ -1,7 +1,7 @@
 @extends('theme.body')
 
 @push('css')
-    {!! themeSectionCss(['chart']) !!}
+    {!! themeSectionCss(['chart', 'news']) !!}
 @endpush
 
 @push('js')
@@ -322,6 +322,10 @@
                     <p class="text-muted">No news items</p>
                 @else
                     @each('partials.frontend.news-section', $newsItems, 'newsItem')
+
+                    <div class="text-center">
+                        <a href="{{ url('news') }}" class="btn btn-outline-secondary btn-sm text-uppercase ">See more...</a>
+                    </div>
                 @endif
             </div>
         </div>
