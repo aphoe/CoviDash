@@ -23,6 +23,7 @@ Route::prefix('/')
         Route::get('news', 'Front\NewsItemsController@index');
         Route::get('states', 'Front\ProvincesController@index');
         Route::get('state/{slug}', 'Front\ProvinceController@index');
+        Route::get('sitemap.xml', 'Front\SitemapsController@index');
     });
 
 Route::get('license',  'LicenseController@index');

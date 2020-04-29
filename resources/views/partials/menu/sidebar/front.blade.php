@@ -18,10 +18,18 @@
 <div class="sidebar-heading">
     Resources
 </div>
-<!-- Nav Item - Home -->
+
+<!-- Nav Item - Newspaper -->
 <li class="nav-item">
     <a class="nav-link" href="{{ url('news') }}">
         <i class="far fa-fw fa-newspaper"></i>
         <span>News &amp; Info</span></a>
+</li>
+
+<!-- Nav Item - Sitemap -->
+<li class="nav-item">
+    <a class="nav-link" href="{{ url('sitemap.xml') }}" target="_blank">
+        <i class="fas fa-rss"></i>
+        <span>Sitemap</span></a>
 </li>
 
