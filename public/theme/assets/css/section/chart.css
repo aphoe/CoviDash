@@ -84,3 +84,9 @@
 .info-progress .diff i {
     font-size: 24px;
 }
+.focused-province{
+    background-color: #4e73df;
+    color: #fff;
+    font-weight: bold;
+    font-size: 110%;
+}

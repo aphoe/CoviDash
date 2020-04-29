@@ -7,16 +7,16 @@ use App\ExternalLink;
 use App\Http\Controllers\Controller;
 use App\Incidence;
 use App\NewsItem;
-use App\User;
+use App\Province;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProvinceController extends Controller
 {
     private $user;
 
     public function __construct()
     {
-        if (\Auth::check()){
+        if(\Auth::check()) {
             $this->middleware(function ($request, $next) {
                 $id = \Auth::user()->id;
                 $this->user = User::findOrFail($id);
@@ -25,23 +25,28 @@ class HomeController extends Controller
         }
     }
 
-    public function index(){
+    public function index(string $slug){
         $country = country(config('project.country'));
+        $province = Province::where('slug', $slug)
+            ->firstOrFail();
+
         $day = Incidence::select('day')
+            ->where('province_id', $province->id)
             ->orderBy('day', 'desc')
             ->take(1)
             ->first()
             ->day;
-        //dd($day);
+
         $raw = 'sum(tested) as tested, sum(positive) as positive, sum(recovered) as recovered, sum(transfered) as transfered, sum(critical) as critical, sum(died) as died';
         $incidence = Incidence::selectRaw($raw)
+            ->where('province_id', $province->id)
             ->first();
-        //dd($incidence);
 
         $lineChart = new CoviDashLineChart();
 
         //Get data from incidence
         $groupIncidence = Incidence::selectRaw('day, ' . $raw)
+            ->where('province_id', $province->id)
             ->groupBy('day')
             ->orderBy('day', 'asc')
             ->get();
@@ -49,9 +54,6 @@ class HomeController extends Controller
 
         //Insert into line chart
         $lineChart->labels($lineData->label);
-        /*$lineChart->dataset('Number tested', 'line', $lineData->tested)
-            ->color('rgb(78, 115, 223)')
-            ->backgroundcolor('rgba(78, 115, 223, 0.1)');*/
         $lineChart->dataset('Tested positive', 'line', $lineData->positive)
             ->color('rgb(246, 194, 62)')
             ->backgroundcolor('rgba(246, 194, 62, 0.1)');
@@ -69,38 +71,29 @@ class HomeController extends Controller
             ->backgroundcolor('rgba(231, 74, 59, 0.1)');
 
         //Options
-        $lineChart->title('Data of cases recorded in ' . $country->getOfficialName());
+        $lineChart->title('Data of cases recorded in ' . $province->name);
 
-        //Global data
-        $apiData = consumeApiData('https://api.covid19api.com/summary');
-        //$apiData = false;
-
-        //Top states
-        $topIncidentStates = Incidence::selectRaw('province_id, ' . $raw)
-            ->with('province')
-            ->orderBy('positive', 'desc')
-            ->groupBy('province_id')
-            ->take(10)
-            ->get();
-        //Progress report
-        $recentDays = recentTwoDays();
-        $currentStats = Incidence::selectRaw($raw)
-            ->where('day', $recentDays->current)
-            ->first();
+        //Positions
+        $pad = 3;
+        $positionConfirmed = provinceIncidencePosition($province, 'positive', $pad);
+        $positionRecovered = provinceIncidencePosition($province, 'recovered', $pad);
+        $positionDeath = provinceIncidencePosition($province, 'recovered', $pad);
+        //dd($positionConfirmed, $positionRecovered, $positionDeath);
 
         $data = [
-            'title' => config('project.disease') . ' data visualisation for ' . $country->getOfficialName(),
-            'metaDesc' => 'Data visualisation for ' . $country->getOfficialName(),
+            'title' => config('project.disease') . ' data visualisation for ' . $province->name,
+            'metaDesc' => 'Data visualisation for ' . $province->name . ' State/province of ' . $country->getOfficialName(),
             'bodyClass' => NULL,
             'menu' => 'front',
             'user' => $this->user,
-            'day' => $day,
             'country' => $country,
+            'province' => $province,
+            'day' => $day,
             'incidence' => $incidence,
             'lineChart' => $lineChart,
-            'globalData' => $apiData->Global ?? false,
-            'topIncidentStates' => $topIncidentStates,
-            'currentStats' => $currentStats,
+            'positionConfirmed' => $positionConfirmed,
+            'positionRecovered' => $positionRecovered,
+            'positionDeath' => $positionDeath,
             'newsItems' => NewsItem::orderBy('date', 'desc')
                 ->where('active', true)
                 ->take(10)
@@ -110,6 +103,6 @@ class HomeController extends Controller
                 ->orderBy('title')
                 ->get(),
         ];
-        return view('front.home.index', $data);
+        return view('front.province.index', $data);
     }
 }

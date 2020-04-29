@@ -22,6 +22,7 @@ Route::prefix('/')
         Route::get('/', 'Front\HomeController@index');
         Route::get('news', 'Front\NewsItemsController@index');
         Route::get('states', 'Front\ProvincesController@index');
+        Route::get('state/{slug}', 'Front\ProvinceController@index');
     });
 
 Route::get('license',  'LicenseController@index');

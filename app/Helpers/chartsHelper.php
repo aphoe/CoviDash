@@ -1,8 +1,10 @@
 <?php
 
 use App\Incidence;
+use App\Province;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Collection;
 
 if (!function_exists('monthsLabel')) {
     /**
@@ -33,7 +35,12 @@ if (!function_exists('monthsLabel')) {
     }
 }
 if (!function_exists('incidenceLineData')) {
-function incidenceLineData($incidences): object
+    /**
+     * Get all the data to plot incidence line chart
+     * @param $incidences
+     * @return object
+     */
+    function incidenceLineData($incidences): object
     {
         //Initialise
         $output = [
@@ -139,5 +146,57 @@ if (!function_exists('daysDiff')) {
             'critical' => $recent->critical === null && $previous->critical === null ? null : $previous->critical - $recent->critical,
             'died' => $recent->died === null && $previous->died === null ? null : $previous->died - $recent->died,
         ];
+    }
+}
+if (!function_exists('provinceIncidencePosition')) {
+    /**
+     * Get the position of a province for an incident field
+     * @param Province $province
+     * @param string $field
+     * @param int $pad
+     * @return Collection
+     */
+    function provinceIncidencePosition(Province $province, string $field, int $pad): ?Collection
+    {
+        $collections = Incidence::selectRaw('province_id, sum(' . $field . ') as ' . $field )
+            ->with(['province'])
+            ->orderBy($field, 'desc')
+            ->groupBy('province_id')
+            ->get();
+        //dd($collections);
+        $position = -1;
+        foreach($collections as $collection){
+            $position++;
+            if($collection->province_id === $province->id){
+                break;
+            }
+        }
+
+        $total = $collections->count();
+        $start = $position - $pad;
+        $take = ($pad * 2) + 1;
+        $diff = 0;
+
+        if($take > $total){
+            $start = 0;
+            $take = $total;
+        }
+
+        if($start < 0){
+            $diff = abs($start);
+            $start = 0;
+        }else if($total < $start + $take){
+            $diff = ($start + $take) - $total;
+            $start -= $diff;
+
+            if($start < 0){
+                $start = 0;
+            }
+        }
+
+        $outputs = $collections->skip($start)
+            ->take($take);
+
+        return $outputs;
     }
 }

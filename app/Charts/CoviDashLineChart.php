@@ -4,7 +4,7 @@ namespace App\Charts;
 
 use ConsoleTVs\Charts\Classes\Chartjs\Chart;
 
-class NationalLineChart extends Chart
+class CoviDashLineChart extends Chart
 {
     /**
      * Initializes the chart.

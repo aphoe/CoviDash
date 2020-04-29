@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\ExternalLink;
 use App\Http\Controllers\Controller;
 use App\Incidence;
+use App\NewsItem;
 use Illuminate\Http\Request;
 
 class ProvincesController extends Controller
@@ -38,6 +40,14 @@ class ProvincesController extends Controller
             'user' => $this->user,
             'country' => $country,
             'incidences' => $incidences,
+            'newsItems' => NewsItem::orderBy('date', 'desc')
+                ->where('active', true)
+                ->take(10)
+                ->get(),
+            'links' => ExternalLink::where('active', true)
+                ->orderBy('priority', 'desc')
+                ->orderBy('title')
+                ->get(),
         ];
         return view('front.provinces.index', $data);
     }

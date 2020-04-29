@@ -153,7 +153,7 @@
                     <div class="row">
                         <div class="col-12 chart-numbers">
                             <div class="icon">
-                                <i class="fas fa-vial"></i>
+                                <i class="fas fa-temperature-high"></i>
                             </div>
                             <div class="right-hand">
                                 <div class="title text-warning">Confirmed</div>
@@ -317,7 +317,7 @@
     <div class="row card-deck my-5">
         <div class="col-7 card shadow">
             <div class="card-body">
-                <h6 class="font-weight-bold text-primary card-title">News update</h6>
+                <h6 class="font-weight-bold text-primary card-title">News and Information</h6>
                 @if($newsItems->count() < 1)
                     <p class="text-muted">No news items</p>
                 @else

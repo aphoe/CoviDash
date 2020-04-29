@@ -1,3 +1,7 @@
+@php
+$sn = 1;
+@endphp
+
 @extends('theme.front')
 
 @push('css')
@@ -18,11 +22,10 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table
-                    class="table table-sm table-hover" id="provincesTable" width="100%" cellspacing="0"
-                    data-order='[[ 2, "desc" ]]' data-page-length='25'
-                >
+                    class="table table-sm table-hover" id="provincesTable" width="100%" cellspacing="0" >
                     <thead>
                     <tr>
+                        <th>&nbsp;</th>
                         <th>&nbsp;</th>
                         <th class="text-primary">No. Tested</th>
                         <th class="text-warning">Confirmed</th>
@@ -36,6 +39,7 @@
                     <tfoot>
                     <tr>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                         <th class="text-primary">No. Tested</th>
                         <th class="text-warning">Confirmed</th>
                         <th class="text-success">Recovered</th>
@@ -48,6 +52,7 @@
                     <tbody>
                     @foreach($incidences as $incidence)
                     <tr>
+                        <td>{{ $sn++ }}</td>
                         <th>{{ $incidence->province->name }}</th>
                         <td class="text-primary">{{ $incidence->tested ?? '--' }}</td>
                         <td class="text-warning">{{ $incidence->positive ?? '--' }}</td>
@@ -65,6 +70,38 @@
 
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row card-deck my-5">
+        <div class="col-7 card shadow">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-primary card-title">News and Information</h6>
+                @if($newsItems->count() < 1)
+                    <p class="text-muted">No news items</p>
+                @else
+                    @each('partials.frontend.news-section', $newsItems, 'newsItem')
+
+                    <div class="text-center">
+                        <a href="{{ url('news') }}" class="btn btn-outline-secondary btn-sm text-uppercase ">See more...</a>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="col-5 card shadow">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-primary card-title">Important links</h6>
+                @if($links->count() < 1)
+                    <p class="text-muted">No important links</p>
+                @else
+                    @foreach($links as $link)
+                        <div class="mb-2">
+                            &bull; <a href="{{ $link->url }}" target="_blank" class="font-weight-bold">{{ $link->title }}</a>
+                            <small class="text-muted">{{ $link->description }}</small>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
