@@ -221,7 +221,7 @@
                         </div>
                     </div>
                     @else
-                        {!! htmlAlert('info', 'Data is not available at the moment.') !!}
+                        {!! htmlAlert('info', 'Not available at the moment.') !!}
                     @endif
                 </div>
                 <div class="card-footer text-muted">
@@ -275,10 +275,70 @@
                     <div class="m-0 font-weight-bold text-primary">Daily progress</div>
                 </div>
                 <div class="card-body">
-                    hello
+                    <div class="info-progress">
+                        <div class="title text-warning">Confirmed</div>
+                        <div class="numbers">
+                            <div class="number show-tooltip" data-toggle="tooltip" title="{{ number_format($incidence->positive) }}">
+                                {{ numberSuffix($incidence->positive, 3) }}
+                            </div>
+                            <div class="diff">
+                                <i class="fas fa-caret-up text-warning"></i>
+                                {{ number_format($currentStats->positive) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-progress">
+                        <div class="title text-danger">Death</div>
+                        <div class="numbers">
+                            <div class="number show-tooltip" data-toggle="tooltip" title="{{ number_format($incidence->died) }}">
+                                {{ numberSuffix($incidence->died, 3) }}
+                            </div>
+                            <div class="diff">
+                                <i class="fas fa-caret-up text-danger"></i>
+                                {{ number_format($currentStats->died) }}</div>
+                        </div>
+                    </div>
+                    <div class="info-progress">
+                        <div class="title text-success">Recovered</div>
+                        <div class="numbers">
+                            <div class="number show-tooltip" data-toggle="tooltip" title="{{ number_format($incidence->recovered) }}">
+                                {{ numberSuffix($incidence->recovered, 3) }}
+                            </div>
+                            <div class="diff">
+                                <i class="fas fa-caret-up text-success"></i>
+                                {{ number_format($currentStats->recovered) }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="row card-deck my-5">
+        <div class="col-7 card shadow">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-primary card-title">News update</h6>
+                @if($newsItems->count() < 1)
+                    <p class="text-muted">No news items</p>
+                @else
+                    @each('partials.frontend.news-section', $newsItems, 'newsItem')
+                @endif
+            </div>
+        </div>
+        <div class="col-5 card shadow">
+            <div class="card-body">
+                <h6 class="font-weight-bold text-primary card-title">Important links</h6>
+                @if($links->count() < 1)
+                    <p class="text-muted">No important links</p>
+                @else
+                    @foreach($links as $link)
+                        <div class="mb-2">
+                            &bull; <a href="{{ $link->url }}" target="_blank" class="font-weight-bold">{{ $link->title }}</a>
+                            <small class="text-muted">{{ $link->description }}</small>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
 @stop

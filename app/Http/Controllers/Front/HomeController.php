@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Charts\NationalLineChart;
+use App\ExternalLink;
 use App\Http\Controllers\Controller;
 use App\Incidence;
+use App\NewsItem;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -65,8 +67,8 @@ class HomeController extends Controller
         $lineChart->title('Data of cases recorded in ' . $country->getOfficialName());
 
         //Global data
-        //$apiData = consumeApiData('https://api.covid19api.com/summary');
-        $apiData = false;
+        $apiData = consumeApiData('https://api.covid19api.com/summary');
+        //$apiData = false;
 
         //Top states
         $topIncidentStates = Incidence::selectRaw('province_id, ' . $raw)
@@ -75,6 +77,11 @@ class HomeController extends Controller
             ->groupBy('province_id')
             ->take(10)
             ->get();
+        //Progress report
+        $recentDays = recentTwoDays();
+        $currentStats = Incidence::selectRaw($raw)
+            ->where('day', $recentDays->current)
+            ->first();
 
         $data = [
             'title' => 'Welcome to ' . config('project.instanceName'),
@@ -88,6 +95,16 @@ class HomeController extends Controller
             'lineChart' => $lineChart,
             'globalData' => $apiData->Global ?? false,
             'topIncidentStates' => $topIncidentStates,
+            'currentStats' => $currentStats,
+            'newsItems' => NewsItem::orderBy('date', 'desc')
+                ->where('active', true)
+                ->take(5)
+                ->get(),
+            'links' => ExternalLink::where('active', true)
+                ->orderBy('priority', 'desc')
+                ->orderBy('title')
+                ->take(10)
+                ->get()
         ];
         return view('front.home.index', $data);
     }

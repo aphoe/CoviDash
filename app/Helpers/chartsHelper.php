@@ -1,5 +1,6 @@
 <?php
 
+use App\Incidence;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -84,16 +85,59 @@ if (!function_exists('consumeApiData')) {
     {
         $client = new Client();
 
-        $response = $client->request($method, $url);
-        $statusCode = $response->getStatusCode();
-        $body = $response->getBody()->getContents();
+        try {
+            $response = $client->request($method, $url);
+            $statusCode = $response->getStatusCode();
+            $body = $response->getBody()->getContents();
 
-        //dd($statusCode, gettype($statusCode), $body, gettype($body));
+            //dd($statusCode, gettype($statusCode), $body, gettype($body));
 
-        if($statusCode !== 200){
+            if ($statusCode !== 200) {
+                return false;
+            } else {
+                return json_decode($body);
+            }
+        }catch (Exception $ex){
             return false;
-        }else{
-            return json_decode($body);
         }
+    }
+}
+if (!function_exists('recentTwoDays')) {
+    /**
+     * Get the most recent 2 days from Incidence table
+     * @return object
+     */
+    function recentTwoDays(): object
+    {
+        $days = Incidence::select('day')
+            ->orderBy('day', 'desc')
+            ->groupBy('day')
+            ->take(2)
+            ->get();
+
+        return (object) [
+            'current' => $days->first()->day,
+            'previous' => $days->last()->day,
+        ];
+    }
+}
+if (!function_exists('daysDiff')) {
+    /**
+     * Get difference from two days' incidences
+     * @param Incidence $recent
+     * @param Incidence $previous
+     * @return object
+     */
+    function daysDiff(Incidence $recent, Incidence $previous): object
+    {
+        //dd($recent, $previous);
+        return (object)[
+            'tested' => $recent->tested === null && $previous->tested === null ? null : $previous->tested - $recent->tested,
+            'positive' => $recent->positive === null && $previous->positive === null ? null : $previous->positive - $recent->positive,
+            'recovered' => $recent->recovered === null && $previous->recovered === null ? null : $previous->recovered - $recent->recovered,
+            'transfered' => $recent->transfered === null && $previous->transfered === null ? null : $previous->transfered - $recent->transfered,
+            'critical' => $recent->critical === null && $previous->critical === null ? null : $previous->critical - $recent->critical,
+            'died' => $recent->died === null && $previous->died === null ? null : $previous->died - $recent->died,
+        ];
     }
 }

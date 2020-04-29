@@ -57,3 +57,30 @@
     color: #555;
 }
 .chart-numbers .numbers .total .label{}
+
+.info-progress{
+    border-bottom: 1px solid #efefef;
+    padding: 5px 0;
+}
+.info-progress:last-of-type{
+    border-bottom: none;
+}
+.info-progress .title{
+    text-transform: uppercase;
+    line-height: 1em;
+}
+.info-progress .numbers{}
+.info-progress .number{
+    display: inline-block;
+    font-size: 32px;
+    padding: 0 8px 0 0;
+    font-weight: 600;
+}
+.info-progress .diff{
+    display: inline-block;
+    color: #444;
+    font-size: 18px;
+}
+.info-progress .diff i {
+    font-size: 24px;
+}
