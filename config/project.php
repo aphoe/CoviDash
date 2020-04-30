@@ -1,7 +1,7 @@
 <?php
 return [
     'appName'               => 'CoviDash',
-    'appUrl'                => 'https://github.com/aphoe',
+    'appUrl'                => 'https://github.com/aphoe/CoviDash',
 
     'instanceName'          => env('CODA_INSTANCE_NAME', 'CoviDash'),
     'instanceNameShort'     => env('CODA_INSTANCE_NAME_SHORT', 'CD'),
