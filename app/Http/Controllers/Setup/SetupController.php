@@ -53,6 +53,8 @@ class SetupController extends Controller
 
                 ->set('APP_URL', $request->url)
                 ->set('APP_NAME', 'CoviDash')
+                ->set('APP_ENV', 'production')
+                ->set('APP_DEBUG', false)
 
                 ->set('ANALYTICS_PROVIDER', 'GoogleAnalytics')
                 ->set('ANALYTICS_TRACKING_ID', $request->google_tracking_id)
@@ -71,8 +73,8 @@ class SetupController extends Controller
         }
 
         //Run migration
-        Artisan::call('migrate --step');
-        Artisan::call('key:generate'); //Generate application key
+        Artisan::call('migrate --step --force');
+        Artisan::call('key:generate --force'); //Generate application key
 
         $this->createProvinces($request->country); //Create provinces
 
