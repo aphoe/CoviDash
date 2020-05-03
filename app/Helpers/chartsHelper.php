@@ -160,6 +160,7 @@ if (!function_exists('provinceIncidencePosition')) {
     {
         $collections = Incidence::selectRaw('province_id, sum(' . $field . ') as ' . $field )
             ->with(['province'])
+            ->where('province_id', '<>', null)
             ->orderBy($field, 'desc')
             ->groupBy('province_id')
             ->get();
