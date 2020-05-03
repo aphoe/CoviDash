@@ -17,7 +17,7 @@ $sn = 1;
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">All states/provinces</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -53,7 +53,7 @@ $sn = 1;
                     @foreach($incidences as $incidence)
                     <tr>
                         <td>{{ $sn++ }}</td>
-                        <th>{{ $incidence->province->name }}</th>
+                        <th>{{ $incidence->province->name ?? '--' }}</th>
                         <td class="text-primary">{{ $incidence->tested ?? '--' }}</td>
                         <td class="text-warning">{{ $incidence->positive ?? '--' }}</td>
                         <td class="text-success">{{ $incidence->recovered ?? '--' }}</td>
