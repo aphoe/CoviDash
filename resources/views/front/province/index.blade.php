@@ -203,7 +203,7 @@
                         <tr class="{{ $recovered->province_id === $province->id ? 'focused-province' : '' }}">
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $recovered->province->name }}</td>
-                            <td class="{{ $recovered->province_id === $province->id ? '' : 'text-success' }}">{{ number_format($recovered->died) }}</td>
+                            <td class="{{ $recovered->province_id === $province->id ? '' : 'text-success' }}">{{ number_format($recovered->recovered) }}</td>
                         </tr>
                         @endforeach
                         </tbody>
