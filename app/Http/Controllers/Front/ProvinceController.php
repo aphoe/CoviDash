@@ -77,7 +77,7 @@ class ProvinceController extends Controller
         $pad = 3;
         $positionConfirmed = provinceIncidencePosition($province, 'positive', $pad);
         $positionRecovered = provinceIncidencePosition($province, 'recovered', $pad);
-        $positionDeath = provinceIncidencePosition($province, 'recovered', $pad);
+        $positionDeath = provinceIncidencePosition($province, 'died', $pad);
         //dd($positionConfirmed, $positionRecovered, $positionDeath);
 
         $data = [
