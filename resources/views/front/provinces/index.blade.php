@@ -61,9 +61,11 @@ $sn = 1;
                         <td class="text-warning">{{ $incidence->critical ?? '--' }}</td>
                         <td class="text-danger">{{ $incidence->died ?? '--' }}</td>
                         <td>
+                            @if(is_object($incidence->province))
                             <a href="{{ url('state/' . $incidence->province->slug) }}">
                                 <i class="fas fa-chart-area"></i> View
                             </a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
