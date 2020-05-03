@@ -34,7 +34,7 @@
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
-                            <th>transferred</th>
+                            <th>Transferred</th>
                             <th>Critical</th>
                             <th>Died</th>
                             <th style="min-width: 170px;">&nbsp;</th>
@@ -48,7 +48,7 @@
                             <th>Tested</th>
                             <th>Positive</th>
                             <th>Recovered</th>
-                            <th>transferred</th>
+                            <th>Transferred</th>
                             <th>Critical</th>
                             <th>Died</th>
                             <th>&nbsp;</th>
